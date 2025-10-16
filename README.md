@@ -68,6 +68,25 @@ Now that you have successfully run the app, let's make changes!
 
 Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
+### Firebase email/password login
+
+The starter screen has been replaced with a Firebase sign-in form located at `src/components/LoginScreen.tsx`. It uses the [Firebase Authentication REST API](https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password), so no additional native dependencies are required.
+
+#### Configure Firebase once
+
+1. Visit the **Project settings → General** tab in the Firebase console, choose your web app (or create one), and copy the **Web API Key**.
+2. Update `src/config/firebaseConfig.ts` with that key. Leaving the placeholder in place will disable the sign-in button and surface a warning in the app.
+3. In the Firebase console, enable the **Email/Password** provider under **Build → Authentication → Sign-in method**.
+4. Still in **Authentication → Users**, create a test user with an email and password you can use locally.
+
+#### Try it out
+
+1. Start the app with `npm run android` or `npm run ios`.
+2. Enter the email/password you created and tap **Sign In**.
+3. The form displays a success banner with the authenticated email or a friendly error coming directly from Firebase.
+
+Need to reset your credentials? Update Firebase and restart the Metro bundler so the new configuration is applied.
+
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 
 - **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
